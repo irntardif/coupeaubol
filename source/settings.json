@@ -29,7 +29,7 @@
     {
       "variable": "header_font",
       "label": "Header Font",
-      "default": "Inconsolata"
+      "default": "BallPill"
     },
     {
       "variable": "text_font",
@@ -46,7 +46,7 @@
     {
       "variable": "text_color",
       "label": "Text Color",
-      "default": "#f0f0f0"
+      "default": "#000"
     }
   ],
   "options": [
@@ -67,17 +67,23 @@
     },
     {
       "variable": "products_per_page",
-      "label": "Products per page",
+      "label": "Produits par page",
       "type": "select",
       "options": "1..100",
-      "default": 3,
-      "description": "The number of products shown per page"
+      "default": 20,
+      "description": "Le nombre de produits par page"
     },
     {
       "variable": "twitter_username",
       "label": "Twitter username",
       "type": "text",
-      "description": "Ex: @bigcartel"
+      "description": "Ex: @coupeaubol"
+    },
+    {
+      "variable": "instagram_username",
+      "label": "Instagram username",
+      "type": "text",
+      "description": "Ex: @coupeaubol"
     }
   ]
 }

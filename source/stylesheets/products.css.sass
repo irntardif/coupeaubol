@@ -6,23 +6,34 @@ body#home, body#products
       list-style-type: none
       overflow: hidden
 
-    li.product
-      box-sizing: border-box
-      float: left
-      padding-bottom: $marginSize
-      padding-right: $marginSize
-      max-width: 30%
+    .products-grid
+      display: grid
+      grid-template-columns: repeat(2,1fr)
+      grid-gap: 1em
 
-      &:nth-child(3n+1)
-        clear: left
+      .product
 
-    img
-      display: block
-      margin-bottom: $marginSize / 2
-      max-width: 100%
+        a
+          display: block
 
-    div.pagination
-      clear: both
+        figure
+          height: 0
+          overflow: hidden
+          padding-bottom: 100%
+          display: block
+          position: relative
+          background-color: #eeeeee
 
-    .pagination span.disabled
-      display: none
+          img
+            width: 60%
+            height: 60% 
+            position: absolute
+            object-fit: contain
+            top: 50%
+            left: 50%
+            -webkit-transform: translate(-50%, -50%)
+            transform: translate(-50%, -50%)
+
+
+
+

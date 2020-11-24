@@ -17,14 +17,16 @@
 
   <body id="{{ page.permalink }}" class="{{ page.category }}">
     <header>
-      <a class="logo-img" href="/" title="{{ store.name | escape }}">
-        {% if theme.logo != blank %}
-        <img src="{{ theme.logo.url }}" alt="{{ store.name }}">
-        {% endif %}
-      </a>
-      <a class="logo-name" href="/" title="{{ store.name | escape }}">  
-        {{ store.name }}
-      </a>
+      <div class="brand">
+        <a class="logo-img" href="/" title="{{ store.name | escape }}">
+          {% if theme.logo != blank %}
+          <img src="{{ theme.logo.url }}" alt="{{ store.name }}">
+          {% endif %}
+        </a>
+        <a class="logo-name" href="/" title="{{ store.name | escape }}">  
+          {{ store.name }}
+        </a>
+      </div>
       <nav>
         <ul>
           <li><a href="/products">Shop</a></li>
@@ -32,7 +34,7 @@
             <li>{{ page | link_to }}</li>
           {% endfor %}
           {% if theme.instagram_username != blank %}
-            <li><a href="https://www.instagram.com/{{ theme.instagram__username }}">Follow</a></li>
+            <li><a target="_blank" href="https://www.instagram.com/{{ theme.instagram_username }}">Follow</a></li>
           {% endif %}
           <li><a href="/cart">Cart ({{ cart.total | money_with_sign }})</a></li>
         </ul>

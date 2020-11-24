@@ -7,7 +7,8 @@ body
   background: #{"{{ theme.background_color }}"}
   color: #{"{{ theme.text_color }}"}
   font: 20px/1.4 normal, 'BallPill'
-  margin: 20px
+  margin: 20px 20px 0 20px 
+  -webkit-font-smoothing: antialiased
 
 a
   color: #4D00E0
@@ -31,9 +32,9 @@ ol.unstyled
   margin-left: 0
   padding: 0
 
-header
+header#main-header
   font-family: #{"{{ theme.header_font | font_family }}"}
-  margin-bottom: 20em
+  margin-bottom: 18em
 
   .brand
     display: -webkit-box
@@ -46,12 +47,15 @@ header
     -ms-flex-pack: justify
     justify-content: space-between 
     text-transform: uppercase
+    margin-left: -.5rem
+    a
+      color: #000
 
   nav
     text-align: right
     margin: 0
-    -webkit-transform: translate(0,-100%)
-    transform: translate(0,-100%)
+    -webkit-transform: translate(0,-200%)
+    transform: translate(0,-200%)
 
     li
       display: inline-block
@@ -64,11 +68,45 @@ header
 
 h1, h2, h3, h4, h5
   font-family: #{"{{ theme.header_font | font_family }}"}
+  font-weight: 500
 
 div.wrap
   display: table
   width: 100%
 
+footer#main-footer
+  background-color: #4D00E0
+  padding: 1.25rem
+  margin-left: -1.25rem
+  margin-right: -1.25rem
+  display: -webkit-box
+  display: -moz-box
+  display: -ms-flexbox
+  display: -webkit-flex
+  display: flex
+  height: 340px
+  position: relative
+
+  a
+    color: #fff
+    
+    &.logo-name
+      position: absolute
+      right: 1rem
+      top: 1rem
+      -webkit-transform: rotate(90deg) translate(3rem, -3rem)
+      transform: rotate(90deg) translate(3rem, -3rem)
+
+  ul
+    padding: 0
+    margin: 0
+    display: inline-block
+    &:first-child
+      padding-right: 8.25rem
+    
+    li
+      list-style: none
+      
 
 
 aside
@@ -105,15 +143,14 @@ aside
     white-space: nowrap
 
 section.content
-  display: table-cell
-  padding-left: $marginSize
-  width: 80%
 
   h1
     position: absolute
     -webkit-transform: translate(0,-100%)
     transform: translate(0,-100%)
-    padding: 1em 0
+    padding: 1rem 0
+    margin: 0
+    font-size: 3.5em
     
 
 body:not(#product) section.content h1

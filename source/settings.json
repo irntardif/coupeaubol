@@ -1,5 +1,5 @@
 {
-  "name": "Coupeaubol",
+  "name": "Coupe au bol",
   "version": "0.0.1",
   "images": [
     {
@@ -72,6 +72,12 @@
       "options": "1..100",
       "default": 20,
       "description": "Le nombre de produits par page"
+    },
+    {
+      "variable": "mail",
+      "label": "Adresse mail",
+      "type": "text",
+      "description": "Ex: exemple@mail.com"
     },
     {
       "variable": "twitter_username",

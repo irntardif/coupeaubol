@@ -5,7 +5,12 @@
     {
       "variable": "logo",
       "label": "Logo",
-      "description": "Adds your logo to the header"
+      "description": "Ajouter un logo"
+    },
+    {
+      "variable": "logo_small",
+      "label": "Logo - Small",
+      "description": "Ajout d'une déclinaison minifiée du logo"
     },
     {
       "variable": "background_image",
@@ -42,6 +47,11 @@
       "variable": "background_color",
       "label": "Background",
       "default": "#FAFAFA"
+    },
+    {
+      "variable": "accent_color",
+      "label": "Couleur secondaire",
+      "default": "#4D00E0"
     },
     {
       "variable": "text_color",

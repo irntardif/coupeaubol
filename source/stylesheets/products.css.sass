@@ -16,36 +16,41 @@ body#home, body#products
         a
           display: block
 
-        figure
-          height: 0
-          overflow: hidden
-          padding-bottom: 100%
-          display: block
-          position: relative
-          background-color: #eeeeee
-
-          img
-            width: 60%
-            height: 60% 
-            position: absolute
-            object-fit: contain
-            top: 50%
-            left: 50%
-            -webkit-transform: translate(-50%, -50%)
-            transform: translate(-50%, -50%)
-
         .infos
-          color: #000
-          margin-top: 1rem
-          display: -webkit-box
-          display: -moz-box
-          display: -ms-flexbox
-          display: -webkit-flex
-          display: flex
-          -webkit-box-pack: justify
-          -moz-box-pack: justify
-          -ms-flex-pack: justify
-          justify-content: space-between 
+          div:first-child
+            color: #000
+            margin-top: 1rem
+            display: -webkit-box
+            display: -moz-box
+            display: -ms-flexbox
+            display: -webkit-flex
+            display: flex
+            -webkit-box-pack: justify
+            -moz-box-pack: justify
+            -ms-flex-pack: justify
+            justify-content: space-between
+          
+          div:nth-child(2)
+            color: #4F4F4F
+
+figure.product-ratio
+  height: 0
+  overflow: hidden
+  padding-bottom: 100%
+  display: block
+  position: relative
+  background-color: #eeeeee
+
+  img
+    width: 60%
+    height: 60% 
+    position: absolute
+    object-fit: contain
+    top: 50%
+    left: 50%
+    -webkit-transform: translate(-50%, -50%)
+    transform: translate(-50%, -50%)
+
 
 
 

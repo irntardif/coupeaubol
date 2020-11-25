@@ -11,11 +11,11 @@ body
   -webkit-font-smoothing: antialiased
 
 a
-  color: #4D00E0
+  color: #{"{{ theme.accent_color }}"}
   text-decoration: none
 
   &:hover
-    color: #4D00E0
+    color: #{"{{ theme.accent_color }}"}
 
 ul
   list-style-type: disc
@@ -34,7 +34,7 @@ ol.unstyled
 
 header#main-header
   font-family: #{"{{ theme.header_font | font_family }}"}
-  margin-bottom: 18em
+  margin-bottom: 24rem
 
   .brand
     display: -webkit-box
@@ -75,7 +75,7 @@ div.wrap
   width: 100%
 
 footer#main-footer
-  background-color: #4D00E0
+  background-color: #{"{{ theme.accent_color }}"}
   padding: 1.25rem
   margin-left: -1.25rem
   margin-right: -1.25rem
@@ -96,6 +96,11 @@ footer#main-footer
       top: 1rem
       -webkit-transform: rotate(90deg) translate(3rem, -3rem)
       transform: rotate(90deg) translate(3rem, -3rem)
+
+    &.logo-small
+      position: absolute
+      bottom: 1rem
+      left: .5rem
 
   ul
     padding: 0
@@ -144,13 +149,24 @@ aside
 
 section.content
 
+  h1, .headline-1
+    padding: 1rem 0
+    margin: 0
+    font-size: 3.5em
+
+  h2, .headline-2
+    padding: 1rem 0
+    margin: 0
+    font-size: 2.5em
+
+  h3, .headline-3
+    font-size: 2em
+
   h1
     position: absolute
     -webkit-transform: translate(0,-100%)
     transform: translate(0,-100%)
-    padding: 1rem 0
-    margin: 0
-    font-size: 3.5em
+
     
 
 body:not(#product) section.content h1
@@ -169,6 +185,14 @@ form
     border: 1px solid #ddd
     padding: 5px
     width: 350px
+
+.btn.add-to-cart
+  background-color: #{"{{ theme.accent_color }}"}
+  border: none
+  border-radius: 80px
+  padding: 1.25rem 4.25rem
+  color: #fff
+  font-size: 1rem
 
 
 .errors

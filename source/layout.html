@@ -89,9 +89,9 @@
           {% endif %}
         </li>
       </ul>
-      <a class="logo-img" href="/" title="{{ store.name | escape }}">
-        {% if theme.logo != blank %}
-        <img class="logo-small" src="{{ theme.logo.url }}" alt="{{ store.name }}">
+      <a class="logo-small" href="/" title="{{ store.name | escape }}">
+        {% if theme.logo_small != blank %}
+        <img src="{{ theme.logo_small.url }}" alt="{{ store.name }}">
         {% endif %}
       </a>
        <a class="logo-name" href="/" title="{{ store.name | escape }}">  

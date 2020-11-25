@@ -1,7 +1,16 @@
 body#product
   section.content 
+    position: relative
+    
+    .price
+      padding: 0
+      top: -1rem
+      position: relative
+
     .product_images
       overflow: hidden
+      margin-left: -1em
+      margin-right: -1em
 
       li
         float: left
@@ -11,8 +20,13 @@ body#product
         img
           float: left
 
-      li.selected
-        border-color: #72c29b
+    .product-infos
+      .text p:first-child
+        color: #{"{{ theme.accent_color }}"}
+        margin: 1rem 0 0
+
+      p:first-child + p
+        margin-top: 0
 
     aside
       float: right
@@ -26,8 +40,7 @@ body#product
         div
           float: left
           margin-right: 5px
-        button
-          font-size: 12px
+  
 
     .availability
       li

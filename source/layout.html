@@ -68,6 +68,14 @@
 
         {% if page.category == 'custom' %}
           {{ page_content | paragraphs }}
+          <ul class="big-balls">
+            <li><a href="mailto:{{ theme.mail}}" alt="mail coupe au bol">Contact</a></li>
+            <li>
+              {% if theme.instagram_username != blank %}
+                <a href="https://www.instagram.com/{{ theme.instagram_username }}">Follow</a>
+              {% endif %}
+            </li>
+          </ul>
         {% else %}
           {{ page_content }}
         {% endif %}

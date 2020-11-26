@@ -21,16 +21,16 @@
     {% case product.status %}
 
       {% when 'sold-out' %}
-        <h5>{{ product.default_price | money_with_sign }} <em>Sold Out</em></h5>
+        <h5><em>Sold Out</em></h5>
 
       {% when 'coming-soon' %}
-        <h5>{{ product.default_price | money_with_sign }} <em>Coming Soon</em></h5>
+        <h5><em>Coming Soon</em></h5>
 
       {% when 'active' %}
-        <h5>{{ product.default_price | money_with_sign }}{% if product.on_sale %} <em>On Sale{% endif %}</em></h5>
-        <h5>Availability</h5>
-
+        {% if product.on_sale %}<h5>On Sale</h5>{% endif %}
+       <!--  <h5>Availability</h5>
         <ul class="unstyled availability">
+         
           {% for option in product.options %}
           <li>
             {% unless product.has_default_option %}<span>{{ option.name }}</span>{% endunless %}
@@ -40,7 +40,7 @@
             </b>
           </li>
           {% endfor %}
-        </ul>
+        </ul> -->
 
         <form method="post" action="/cart">
           {% if product.has_default_option %}
@@ -56,20 +56,55 @@
     {% endcase %}
   </aside>
 
-  {% for artist in product.artists %}
-    {% if forloop.first %}
-      <h5>by {{ artist.name }}</h5>
-      {% if forloop.length > 2 %}, {% endif %}
-    {% elsif forloop.last %}
-      <h5>and {{ artist.name }}</h5>
-    {% else %}
-      <h5>{{ artist.name }}</h5>,
-    {% endif %}
-  {% endfor %}
-
   <div class="text headline-3">
     {% if product.description != blank %}
       {{ product.description | paragraphs }}
     {% endif %}
   </div>
+</div>
+
+<div class="related">
+{% if product.categories %}
+  {% for cat in product.categories %}
+    {% if forloop.first %}
+      <h3>Other {{ cat.name }}</h3>
+      <ul class="unstyled products-grid">
+      {% for prod in cat.products %}
+        {% if prod.id != product.id %}
+          <li class="{{ prod.css_class }}">
+            <a href="{{ prod.url }}">
+              <figure class="product-ratio">
+                <img alt="Image of {{ prod.name | escape }}" src="{{ prod.image | product_image_url size: auto }}">
+              </figure>
+              <section class="infos">
+                <div>
+                  <span>{{ prod.name }}</span>
+                  <span>{{ prod.default_price | money_with_sign }}</span>
+                  {% if prod.on_sale %}
+                    <em>En solde</em>
+                  {% endif %}
+                </div>
+                {% if prod.categories %}
+                  <div>
+                  {% for cat in prod.categories %}
+                    {% if forloop.first %}
+                      <span>{{ cat.name }}</span>
+                      {% if forloop.length > 2 %}, {% endif %}
+                    {% elsif forloop.last %}
+                      <span>{{ cat.name }}</span>
+                    {% else %}
+                      <span>{{ cat.name }},</span>
+                    {% endif %}
+                  {% endfor %}
+                  </div>
+                {% endif %}
+              </section>
+            </a>
+          </li>
+        {% endif %}
+      {% endfor %}
+      </ul>
+    {% endif %}
+  {% endfor %}
+{% endif %}
 </div>

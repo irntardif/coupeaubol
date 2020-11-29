@@ -13,9 +13,15 @@ body#product,
       display: grid
       grid-template-columns: repeat(2,1fr)
       grid-gap: 1em
+      @media screen and (max-width: 767px)
+        grid-template-columns: repeat(1,1fr)
 
       .product
         margin-bottom: 6rem
+        opacity: 1
+        transition: opacity .5s ease
+        &:hover
+          opacity: .7
         a
           display: block
 

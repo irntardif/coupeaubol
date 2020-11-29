@@ -1,46 +1,105 @@
 body#cart
+  .content
+    max-width: 926px
+    margin: auto
+  h1
+    padding-bottom: 0
   form
+    border-top: 1px solid #000
+    margin-bottom: 25em
+    position: relative
+    h4, .subtotal
+      display: inline-block
+      font-size: 1.5em
+      margin: 0
     ul
-      border-bottom: dashed 1px #ddd
-      margin-bottom: 2em
+      border-bottom: 1px solid #000
+      margin: 0
+      padding: 1.65rem 0
 
     ul + p
       float: left
 
     button
       float: right
-      margin: 1.2em 0
+
+    .go-back
+      padding-top: 1em
+      display: inline-block
+      a
+        font-family: 'Roboto', sans-serif
+        color: #000
 
     li
       overflow: hidden
+      display: -webkit-box
+      display: -moz-box
+      display: -ms-flexbox
+      display: -webkit-flex
+      display: flex
+      -webkit-box-pack: justify
+      -moz-box-pack: justify
+      -ms-flex-pack: justify
+      justify-content: space-between 
+      align-items: center
+      > *
+        display: inline-block
 
-      img
-        display: block
-        float: left
-        margin-right: 30px
-
+      .product
+        width: 55%
+        position: relative
+        a, h2
+          display: inline-block
+          color: #000
+          
       h2
-        float: left
-        width: 60%
+        position: absolute
+        top: 50%
+        left: 0
+        display: block
+        -webkit-transform: translate(0,-50%)
+        transform: translate(0,-50%)
+        padding: 0 0 0 6rem
+        font-weight: 400
 
       p
-        float: left
-        padding-top: 7px
 
         input
-          margin-right: 10px
-          text-align: center
-          width: 15px
+          width: 5rem
+          border: none
+          border-bottom: 1px solid #000
+          margin-right: 2.75rem
+          text-align: left
 
+        &.price
+          font-family: 'Roboto', sans-serif
+          width: 25%
+          text-align: right
+          > span
+            width: 75px
+            display: inline-block
+      
       a.remove
-        display: inline-block
-        background: #ddd + 20
-        border-radius: 20px
-        height: 20px
-        line-height: 18px
-        margin-left: 20px
+        border: 1px solid #000
+        border-radius: 100%
+        width: 30px
+        height: 30px
         text-align: center
-        width: 20px
+        color: #000
+        line-height: 2rem
 
         &:hover
           background: #ddd
+
+    .form-footer
+      display: -webkit-box
+      display: -moz-box
+      display: -ms-flexbox
+      display: -webkit-flex
+      display: flex
+      -webkit-box-pack: justify
+      -moz-box-pack: justify
+      -ms-flex-pack: justify
+      justify-content: space-between 
+      padding: 2em 0
+      

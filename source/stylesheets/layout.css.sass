@@ -10,12 +10,33 @@ body
   margin: 20px 20px 0 20px 
   -webkit-font-smoothing: antialiased
 
+img
+  max-width: 100%
+
 a
   color: #{"{{ theme.accent_color }}"}
   text-decoration: none
 
   &:hover
     color: #{"{{ theme.accent_color }}"}
+  &.underline
+    color: #000
+    position: relative
+    &:after, &:before
+      content: ""
+      background-color: #000
+      height: 1px
+      position: absolute
+      bottom: 0
+      left: 0
+      width: 100%
+    &:after 
+      transition: width .5s ease
+      width: 0
+    &:hover:before
+      width: 0
+    &:hover:after
+      width: 100%
 
 ul
   list-style-type: disc
@@ -32,43 +53,122 @@ ol.unstyled
   margin-left: 0
   padding: 0
 
+.visible-xs
+  display: block
+  @media screen and (min-width: 767px)
+    display: none
+
+.hidden-xs
+  @media screen and (max-width: 767px)
+    display: none
+
 header#main-header
   font-family: #{"{{ theme.header_font | font_family }}"}
   margin-bottom: 24rem
 
   .brand
-    display: -webkit-box
-    display: -moz-box
-    display: -ms-flexbox
-    display: -webkit-flex
-    display: flex
-    -webkit-box-pack: justify
-    -moz-box-pack: justify
-    -ms-flex-pack: justify
-    justify-content: space-between 
-    text-transform: uppercase
-    margin-left: -.5rem
+    @media screen and (max-width:767px)
+      position: fixed
+      width: 100%
+      left: .8rem
+      top: 2rem
+      z-index: 999
+    @media screen and (min-width:767px)
+      display: -webkit-box
+      display: -moz-box
+      display: -ms-flexbox
+      display: -webkit-flex
+      display: flex
+      -webkit-box-pack: justify
+      -moz-box-pack: justify
+      -ms-flex-pack: justify
+      justify-content: space-between 
+      text-transform: uppercase
+      margin-left: -.5rem
     a
       color: #000
 
-  nav
-    text-align: right
-    margin: 0
-    -webkit-transform: translate(0,-200%)
-    transform: translate(0,-200%)
+    .logo-img
+      display: block
+      @media screen and (max-width:767px)
+        width: 3em
 
-    li
-      display: inline-block
-      padding-left: 3em
-      a
-        color: #000
-        //@include transition(color .3s ease)
-        &:hover
-          //color: rgba(#000, .5)
+      @media screen and (min-width:767px)
+        img
+          max-width: none
+  
+  #mobile-btn
+    width: 16px
+    height: 16px
+    cursor: pointer
+    transition: background-color .3s ease
+    background-color: #{"{{ theme.accent_color }}"}
+    border-radius: 100%
+    position: fixed
+    right: 1em
+    top: 3.2rem
+    z-index: 999
+  .logo-img
+    opacity: 1
+    transition: opacity .5s ease .5s
+
+  nav
+    @media screen and (max-width:767px)
+      position: fixed
+      transition: transform .5s ease
+      background: #{"{{ theme.accent_color }}"}
+      top: 0
+      left: 0
+      transform: translate(100%,0)
+      width: 100%
+      height: 100vh
+      font-size: 2.5em
+      z-index: 998
+      .wh-logo
+        width: 3.3rem
+        position: relative
+        top: 1.5rem
+        left: 1rem
+    @media screen and (min-width:767px)
+      text-align: right
+      margin: 0
+      -webkit-transform: translate(0,-200%)
+      transform: translate(0,-200%)
+    
+    ul
+      @media screen and (max-width:767px)
+        padding: 3.7rem 1rem 0 1rem
+        text-transform: uppercase
+        margin: 0
+
+      li
+        list-style: none
+        padding-bottom: 1rem
+        @media screen and (min-width:767px)
+          display: inline-block
+          padding-left: 3em
+          padding-bottom: 0
+
+        a
+          color: #fff
+          transition: color .3s ease
+          @media screen and (min-width:767px)
+            color: #000
+            &:hover
+              color: rgba(#000, .5)
 
 header#main-header .brand a,
 #about header#main-header nav li a
   color: #fff
+
+.menu-open header#main-header
+  #mobile-btn
+    background-color: #fff
+  .logo-img
+    opacity: 0
+  nav 
+    @media screen and (max-width:767px)
+      transform: translate(0,0)
 
 h1, h2, h3, h4, h5
   font-family: #{"{{ theme.header_font | font_family }}"}
@@ -93,13 +193,16 @@ footer#main-footer
 
   a
     color: #fff
+    transition: color .5s ease
+    &:hover
+      color: rgba(#fff, .5)
     
     &.logo-name
       position: absolute
-      right: 1rem
-      top: 1rem
+      right: 1em
+      top: 1em
       -webkit-transform: rotate(90deg) translate(3rem, -3rem)
-      transform: rotate(90deg) translate(3rem, -3rem)
+      transform: rotate(90deg) translate(3.5rem, -3rem)
 
     &.logo-small
       position: absolute
@@ -157,15 +260,25 @@ section.content
     padding: 1rem 0
     margin: 0
     font-size: 3.5em
+    @media screen and (max-width:767px)
+      font-size: 2.5em
 
   h2, .headline-2
     padding: 1rem 0
     margin: 0
     font-size: 2.5em
+    @media screen and (max-width:767px)
+      font-size: 1.5em
+  
+  h2.mini-title
+    font-family: 'Roboto', sans-serif
+    font-size: 1em
 
   h3, .headline-3
     font-size: 2em
     margin: 0
+    @media screen and (max-width:767px)
+      font-size: 1.5em
 
   h1
     position: absolute
@@ -214,6 +327,12 @@ select
   color: #fff
   font-size: 1em
 
+.pagination
+  text-align: right
+  padding: 2em 0
+  font-size: .8em
+  .disabled
+    display: none
 
 .errors
   border-top: 1px soldi #A65A5A
@@ -235,6 +354,8 @@ select
       color: #fff
     p:not(.small)
       font-size: 2.5em
+      @media screen and (max-width:767px)
+        font-size: 1.5em
 
 .big-balls
   margin: 0
@@ -256,3 +377,30 @@ select
       top: 50%
       left: 50%
       transform: translate(-50%, -50%)
+
+#artists
+  .big-balls
+    display: none
+
+.row.artist
+  padding-top: 6rem
+  display: grid
+  grid-template-columns: repeat(2,1fr)
+  grid-gap: 1em
+  &:last-of-type
+  margin-bottom: 6rem
+    
+  .text-bloc
+    max-width: 450px
+
+    ul
+      margin: 0
+      padding: 0
+      list-style: none
+      a
+        line-height: 2rem
+        &:after, &:before
+          background-color: #{"{{ theme.accent_color }}"}
+        
+
+       

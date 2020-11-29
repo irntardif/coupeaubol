@@ -17,3 +17,13 @@
 //
 //= require javascripts/product
 //= require javascripts/cart
+
+
+document.addEventListener('DOMContentLoaded', function(){
+	let mobileBtn = document.getElementById('mobile-btn'),
+		body = document.getElementsByTagName('body')[0];
+	mobileBtn.addEventListener('click', function(){
+		body.classList.contains('menu-open') ? body.classList.remove('menu-open') : body.classList.add('menu-open');
+	})
+
+}, false);

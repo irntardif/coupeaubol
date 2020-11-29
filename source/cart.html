@@ -4,31 +4,34 @@
   <ul class="unstyled">
     {% for item in cart.items %}
     <li>
-      <a href="{{ item.product.url }}">
-        <img src="{{ item.product.image | product_image_url size:"thumb" }}">
-      </a>
-      <h2>
+      <a href="#" class="remove">&times;</a>
+      <div class='product'>
         <a href="{{ item.product.url }}">
-          {{ item.product.name }}
-          {% unless item.product.has_default_option %}
-            <em>{{ item.option.name }}</em>
-          {% endunless %}
+          <img src="{{ item.product.image | product_image_url size:"thumb" }}">
         </a>
-      </h2>
-      <p>
+        <h2 class="mini-title">
+          <a href="{{ item.product.url }}">
+            {{ item.product.name }}
+            {% unless item.product.has_default_option %}
+              – <em>{{ item.option.name }}</em>
+            {% endunless %}
+          </a>
+        </h2>
+      </div>
+      <p class="price">
         {{ item | item_quantity_input }}
-        {{ item.price | money_with_sign }}
-        <a href="#" class="remove">&times;</a>
+        <span>{{ item.price | money_with_sign }}</span>
       </p>
     </li>
     {% endfor %}
   </ul>
 
-  <p>
-    <strong>Subtotal</strong>
-    <span>{{ cart.subtotal | money_with_sign }}</span>
-  </p>
-  <button type="submit" name="checkout" title="Checkout">Checkout</button>
+  <div class="form-footer">
+    <h4>Subtotal</h4>
+    <span class="subtotal">{{ cart.subtotal | money_with_sign }}</span>
+  </div>
+  <button class="btn add-to-cart" type="submit" name="checkout" title="Checkout">Checkout</button>
+  <span class="go-back"><a class="underline" href="/products" alt="continue shopping">Continue Shopping</a><span>
 </form>
 
 {% else %}

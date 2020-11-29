@@ -23,20 +23,28 @@
           <img src="{{ theme.logo.url }}" alt="{{ store.name }}">
           {% endif %}
         </a>
-        <a class="logo-name" href="/" title="{{ store.name | escape }}">  
+        <a class="logo-name hidden-xs" href="/" title="{{ store.name | escape }}">  
           {{ store.name }}
         </a>
       </div>
+      <div id="mobile-btn" class="visible-xs"></div>
       <nav>
+        {% if theme.logo_small != blank %}
+        <img class="wh-logo visible-xs" src="{{ theme.logo_small.url }}" alt="{{ store.name }}">
+        {% endif %}
         <ul>
-          <li><a href="/products">Shop</a></li>
+         <!--  <li><a href="/products">Shop</a></li> -->
           {% for page in pages.all %}
             <li>{{ page | link_to }}</li>
           {% endfor %}
           {% if theme.instagram_username != blank %}
             <li><a target="_blank" href="https://www.instagram.com/{{ theme.instagram_username }}">Follow</a></li>
           {% endif %}
-          <li><a href="/cart">Cart ({{ cart.total | money_with_sign }})</a></li>
+          <li><a href="/cart">Cart 
+            {% if cart.total > 0 %}
+            ({{ cart.total | money_with_sign }})
+            {% endif %}
+          </a></li>
         </ul>
       </nav>
     </header>
